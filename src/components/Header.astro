@@ -1,0 +1,79 @@
+<header class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">株式会社XXX</div>
+        <nav class="navbar-nav" aria-label="メインナビゲーション">
+            <a href="#mission">Mission</a>
+            <a href="#Description">Job Description</a>
+            <a href="#Recruitment">Recruitment Information</a>
+        </nav>
+    </div>
+</header>
+
+<style>
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-container {
+    width: min(1500px, calc(100% - 32px));
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+    letter-spacing: 0.05em;
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.navbar-nav a {
+    font-size: 0.95rem;
+    color: #6b7280;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.navbar-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d9434e;
+    transition: width 0.2s ease;
+}
+
+.navbar-nav a:hover {
+    color: #1f2937;
+}
+
+.navbar-nav a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        gap: 16px;
+        font-size: 0.85rem;
+    }
+}
+</style>

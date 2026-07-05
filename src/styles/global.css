@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Yu Gothic",
+        "Hiragino Sans",
+        sans-serif;
+
+    background: #f5f6f8;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 64px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
+
+/* --main共通-- */
+
+.section {
+    padding: 88px 0;
+}
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-label {
+    display: flex;
+    justify-content: center;
+    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: #d9434e;
+    margin-bottom: 8px;
+    font-family: "inherit", sans-serif;
+}
+
+.section-heading h2 {
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    color: #1f2937;
+    display: flex;
+    justify-content: center;
+}
+
+.section-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.main-grid article {
+    padding: 24px;
+    background: var(--card-bg, #ffffff);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.main-grid h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.main-grid p {
+    color: #6b7280;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
