@@ -1,0 +1,92 @@
+---
+interface ImageGalleryProps {
+    images?: string[];
+    alt?: string;
+    caption?: string;
+}
+
+const { images = [], alt = "会社の写真", caption = "" } = Astro.props as ImageGalleryProps;
+---
+
+<div class="image-gallery" data-image-gallery>
+    <div class="image-gallery__viewport">
+        {images.map((src: string, index: number) => (
+            <figure
+                class:list={['image-gallery__slide', { 'is-active': index === 0 }]}
+                data-index={index}
+                aria-hidden={index !== 0 ? 'true' : 'false'}
+            >
+                <img src={src} alt={alt} loading="lazy" />
+                {caption && index === 0 && <figcaption>{caption}</figcaption>}
+            </figure>
+        ))}
+    </div>
+
+    {images.length > 1 && (
+        <div class="image-gallery__controls" aria-label="画像切替">
+            <button type="button" class="image-gallery__button image-gallery__button--prev" aria-label="前の画像">
+                ←
+            </button>
+
+            <div class="image-gallery__dots" aria-label="画像一覧">
+                {images.map((_: string, index: number) => (
+                    <button
+                        type="button"
+                        class:list={['image-gallery__dot', { 'is-active': index === 0 }]}
+                        aria-label={`${index + 1}枚目の画像`}
+                        data-index={index}
+                    />
+                ))}
+            </div>
+
+            <button type="button" class="image-gallery__button image-gallery__button--next" aria-label="次の画像">
+                →
+            </button>
+        </div>
+    )}
+</div>
+
+<script>
+    const galleries = document.querySelectorAll<HTMLElement>('[data-image-gallery]');
+
+    galleries.forEach((gallery: HTMLElement) => {
+        const slides = Array.from(gallery.querySelectorAll<HTMLElement>('.image-gallery__slide'));
+        if (slides.length < 2) return;
+
+        const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>('.image-gallery__dot'));
+        const prevButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__button--prev');
+        const nextButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__button--next');
+
+        let currentIndex = 0;
+
+        const updateSlide = (nextIndex: number) => {
+            currentIndex = (nextIndex + slides.length) % slides.length;
+
+            slides.forEach((slide: HTMLElement, index: number) => {
+                const isActive = index === currentIndex;
+                slide.classList.toggle('is-active', isActive);
+                slide.setAttribute('aria-hidden', String(!isActive));
+            });
+
+            dots.forEach((dot: HTMLButtonElement, index: number) => {
+                dot.classList.toggle('is-active', index === currentIndex);
+                dot.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+            });
+        };
+
+        prevButton?.addEventListener('click', () => updateSlide(currentIndex - 1));
+        nextButton?.addEventListener('click', () => updateSlide(currentIndex + 1));
+        dots.forEach((dot: HTMLButtonElement) => {
+            dot.addEventListener('click', () => {
+                updateSlide(Number(dot.dataset.index));
+            });
+        });
+
+        let autoPlay = window.setInterval(() => updateSlide(currentIndex + 1), 4000);
+
+        gallery.addEventListener('mouseenter', () => window.clearInterval(autoPlay));
+        gallery.addEventListener('mouseleave', () => {
+            autoPlay = window.setInterval(() => updateSlide(currentIndex + 1), 4000);
+        });
+    });
+</script>

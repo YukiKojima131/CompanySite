@@ -1,0 +1,55 @@
+<section id="information" class="section section-information">
+    <div class="container">
+        <div class="section-heading">
+            <p class="section-label">Information</p>
+            <h2>企業情報</h2>
+        </div>
+        <div class="main-grid">
+            <article>
+                <h3>代表者名</h3>
+                <p>齊藤和久</p>
+            </article>
+            <article>
+                <h3>本社住所</h3>
+                <p>神奈川県横浜市金沢区六浦南五丁目２番14号</p>
+            </article>
+            <article>
+                <h3>本社電話番号</h3>
+                <p>045-784-7718</p>
+            </article>
+            <article>
+                <h3>従業員数</h3>
+                <p>9名</p>
+            </article>
+            <article class="map-card">
+                <iframe
+                    src="https://www.google.com/maps?q=神奈川県横浜市金沢区六浦南五丁目２番14号&output=embed"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Google Map"
+                    class="map-embed"
+                ></iframe>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+.map-embed {
+    width: 100%;
+    height: 280px;
+    border: 0;
+    border-radius: 12px;
+    margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+    .map-card {
+        grid-column: span 1;
+    }
+}
+.section-information {
+    --card-bg: #f1f1f1;
+    background: #ffffff;
+}
+</style>

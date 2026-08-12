@@ -1,35 +1,78 @@
+---
+import ImageGallery from "./ImageGallery.astro";
+
+const missionImages = [
+    "../../doc/image/mission1.png",
+    "../../doc/image/mission2.png",
+];
+---
+
 <section id="mission" class="section section-mission">
     <div class="container">
         <div class="section-heading">
             <p class="section-label">Mission</p>
-            <h2>企業理念</h2>
+            <h2>経営理念</h2>
         </div>
-
         <p class="section-text">
-            私たちは、企業の成長と社会の変化に合わせて、最適なデジタル体験を設計し、
-            持続可能なビジネスの実現に貢献します。
+            横浜TLC合同会社には、大切にしている経営理念があります。<br>
+            それが『楽しく！格好よく！』です。<br>
+            鉄道インフラを支える電車線工事は、責任が大きく、決して楽な仕事ではありません。<br>
+            だからこそ私たちは、この理念を胸に、どこよりも誇り高く、<br>
+            魅力的なチームであり続けることを目指しています。<br>
         </p>
-
-        <div class="main-grid background">
-            <article>
-                <h3>課題を可視化</h3>
-                <p>現状の課題を丁寧にヒアリングし、次に必要な改善点を整理します。</p>
-            </article>
-            <article>
-                <h3>実行力を高める</h3>
-                <p>設計から実装まで一貫して支援し、現場で使える形に落とし込みます。</p>
-            </article>
-            <article>
-                <h3>継続的に改善</h3>
-                <p>導入後も運用を見据えた改善サイクルを回し、長期的に価値を発揮します。</p>
-            </article>
-        </div>
+        <p class="mission-title">
+            1.『楽しく』ー強い絆で結ばれた最高のチームワーク
+        </p>
+        <p class="section-text">
+            危険が伴う夜間工事だからこそ、現場の信頼関係と風通しの良さは何よりも重要です。<br>
+            私たちは、社歴や年齢に関係なく、誰もが自分の意見を言い合える暖かい環境づくりを大切にしています。<br>
+            お互いをリスペクトし、仕事のやりがいを共有し、時には冗談を言い合える。<br>
+            そんな「楽しさ」があるからこそ、厳しい現場でも全員で笑顔で乗り越えることができ、それが圧倒的な「無事故」という結果に繋がっています。<br>
+        </p>
+        <p class="mission-title">
+            2.『格好よく』ープロフェッショナルとしての圧倒的な誇り
+        </p>
+        <p class="section-text">
+            私たちが向き合うのは、人々の生活を乗せて走る電車の「命」である電気設備です。<br>
+            終電後の限られた時間の中で、特殊な技術とチームワークを駆使し、一寸の狂いもなく架線を張り替える。<br>
+            翌朝、何事もなかったかのように走り出す電車を見送る瞬間は、まさに「格好いい職人」そのものです。<br>
+            妥協のない高い技術力と、誰もが安心して暮らせる社会を守る責任感。<br>
+            それが私たちの「格好よさ」の原点です。<br>
+            <br>
+            堅苦しいだけの現場はいらない。私たちは、技術と心の両面から、<br>
+            これからの鉄道インフラの未来を明るく照らし続けます。
+        </p>
+        <ImageGallery images={missionImages} alt="経営理念の写真" />
     </div>
 </section>
 
 <style>
+.mission-text {
+    margin-bottom: 36px;
+    font-weight: 700;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-img {
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: center;
+}
+
 .section-mission {
-    --card-bg: #ffffff;
-    background: #f1f1f1;
+    --card-bg: #f1f1f1;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+.mission-title {
+    display: block;
+    margin-bottom: 12px;
+    font-size: clamp(1.2rem, 2vw, 1.2rem);
+    font-weight: 800;
+    line-height: 1.4;
+    color: #1f2937;
 }
 </style>
