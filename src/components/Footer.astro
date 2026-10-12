@@ -1,0 +1,143 @@
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <div class="site-footer__navigation">
+            <nav class="site-footer__menu" aria-label="ページ内リンク">
+                <p class="site-footer__eyebrow">SITE MENU</p>
+                <ul class="site-footer__links">
+                    <li><a href="#message">挨拶</a></li>
+                    <li><a href="#Description">仕事内容</a></li>
+                    <li><a href="#mission">経営理念</a></li>
+                    <li><a href="#Recruitment">応募要領</a></li>
+                    <li><a href="#information">企業情報</a></li>
+                </ul>
+            </nav>
+
+            <a class="site-footer__top" href="#top">
+                <span>ページ上部へ戻る</span>
+                <span class="material-icons" aria-hidden="true">arrow_upward</span>
+            </a>
+        </div>
+
+        <div class="site-footer__copyright">
+            <small>© {new Date().getFullYear()} 横浜TLC合同会社</small>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        padding: 56px 0 22px;
+        background: #1f2937;
+        color: #f9fafb;
+    }
+
+    .site-footer__inner {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+    }
+
+    .site-footer__navigation {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 32px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .site-footer__eyebrow {
+        margin-bottom: 18px;
+        color: #f0838b;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+    }
+
+    .site-footer__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 28px;
+        padding: 0;
+        list-style: none;
+    }
+
+    .site-footer__links a {
+        display: inline-block;
+        color: #f9fafb;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+
+    .site-footer__links a:hover {
+        color: #f0838b;
+    }
+
+    .site-footer__top {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex: 0 0 auto;
+        padding: 10px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        color: #f9fafb;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .site-footer__top:hover {
+        border-color: #f0838b;
+        color: #f0838b;
+    }
+
+    .site-footer__top .material-icons {
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    .site-footer__copyright {
+        padding-top: 20px;
+        color: #d1d5db;
+        font-size: 0.8rem;
+        text-align: right;
+    }
+
+    .site-footer a:focus-visible {
+        outline: 2px solid #fca5a5;
+        outline-offset: 4px;
+    }
+
+    @media (max-width: 640px) {
+        .site-footer {
+            padding-top: 40px;
+        }
+
+        .site-footer__navigation {
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .site-footer__links {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px 20px;
+        }
+
+        .site-footer__top {
+            align-self: flex-end;
+        }
+
+        .site-footer__copyright {
+            text-align: center;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .site-footer__links a,
+        .site-footer__top {
+            transition: none;
+        }
+    }
+</style>

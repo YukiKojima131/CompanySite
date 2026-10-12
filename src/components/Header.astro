@@ -1,27 +1,48 @@
+---
+import logoFull from "../../doc/image/tlc-logo-full.png";
+---
+
 <header class="navbar">
     <div class="navbar-container">
-        <div class="navbar-logo">横浜TLC合同会社</div>
+        <a class="navbar-logo" href="#top" aria-label="横浜TLC合同会社 トップページ">
+            <img
+                src={logoFull.src}
+                alt="横浜TLC合同会社 -Train Line Construction-"
+                width="1243"
+                height="216"
+            />
+        </a>
 
         <button
             class="menu-toggle"
             type="button"
             aria-label="メニューを開く"
             aria-expanded="false"
+            aria-controls="main-navigation"
         >
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="material-icons menu-toggle__icon" aria-hidden="true">menu</span>
         </button>
 
-        <nav class="navbar-menu" aria-label="メインナビゲーション">
-            <a href="#top">トップ</a>
-            <a href="#message">挨拶</a>
-            <a href="#Description">仕事内容</a>
-            <a href="#mission">経営理念</a>
-            <a href="#Recruitment">応募要領</a>
-            <a href="#information">企業情報</a>
-        </nav>
     </div>
+
+    <button class="menu-backdrop" type="button" aria-label="メニューを閉じる" tabindex="-1" aria-hidden="true"></button>
+
+    <nav id="main-navigation" class="navbar-menu" aria-label="メインナビゲーション" aria-hidden="true">
+        <div class="navbar-menu__heading">
+            <p class="navbar-menu__eyebrow">NAVIGATION</p>
+            <h2>ページメニュー</h2>
+        </div>
+
+        <div class="navbar-menu__links">
+            <a href="#top"><span class="navbar-menu__number">01</span><span>トップ</span><svg class="navbar-menu__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z" /></svg></a>
+            <a href="#message"><span class="navbar-menu__number">02</span><span>挨拶</span><svg class="navbar-menu__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z" /></svg></a>
+            <a href="#Description"><span class="navbar-menu__number">03</span><span>仕事内容</span><svg class="navbar-menu__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z" /></svg></a>
+            <a href="#mission"><span class="navbar-menu__number">04</span><span>経営理念</span><svg class="navbar-menu__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z" /></svg></a>
+            <a href="#Recruitment"><span class="navbar-menu__number">05</span><span>応募要領</span><svg class="navbar-menu__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z" /></svg></a>
+            <a href="#information"><span class="navbar-menu__number">06</span><span>企業情報</span><svg class="navbar-menu__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5H9z" /></svg></a>
+        </div>
+
+    </nav>
 </header>
 
 <style>
@@ -31,14 +52,31 @@
     left: 0;
     right: 0;
     height: 64px;
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    background: transparent;
+    border-bottom: 1px solid transparent;
     z-index: 1000;
+    box-shadow: none;
+    visibility: visible;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navbar.is-visible {
+    background: #ffffff;
+    border-bottom-color: #e5e7eb;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    visibility: visible;
+}
+
+.navbar.is-menu-open {
+    z-index: 1100;
+    background: transparent;
+    border-bottom-color: transparent;
+    box-shadow: none;
 }
 
 .navbar-container {
     position: relative;
+    z-index: 3;
     width: min(1500px, calc(100% - 32px));
     margin: 0 auto;
     height: 100%;
@@ -48,18 +86,23 @@
 }
 
 .navbar-logo {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #1f2937;
-    letter-spacing: 0.05em;
+    display: block;
+    flex: 0 1 auto;
+    width: clamp(170px, 24vw, 240px);
+}
+
+.navbar-logo img {
+    width: 100%;
+    height: auto;
 }
 
 .menu-toggle {
+    position: relative;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     width: 46px;
     height: 46px;
     border: 1px solid rgba(17, 24, 39, 0.08);
@@ -76,96 +119,191 @@
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
 }
 
-.menu-toggle span {
-    display: block;
-    width: 22px;
-    height: 2.5px;
-    background: #111827;
-    border-radius: 999px;
-    transition: transform 0.25s ease, opacity 0.2s ease;
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+.menu-toggle__icon {
+    font-size: 26px;
+    line-height: 1;
 }
 
 .navbar-menu {
-    position: absolute;
-    top: calc(100% + 12px);
+    position: fixed;
+    top: 0;
+    bottom: 0;
     right: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    min-width: 220px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.96);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(229, 231, 235, 0.9);
-    border-radius: 14px;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    width: min(420px, 100vw);
+    padding: clamp(88px, 12vh, 112px) 32px 32px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: #ffffff;
+    border-left: 1px solid #e5e7eb;
+    box-shadow: -18px 0 48px rgba(15, 23, 42, 0.16);
+    z-index: 2;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-8px);
+    transform: translateX(100%);
     pointer-events: none;
-    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0s linear 0.28s;
 }
 
 .navbar-menu.is-open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(0);
     pointer-events: auto;
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0s;
 }
 
-.navbar-menu a {
-    padding: 12px 14px;
-    border-radius: 10px;
-    color: #374151;
-    text-align: left;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+.navbar-menu__heading {
+    margin-bottom: 28px;
 }
 
-.navbar-menu a:hover {
-    background: #f3f4f6;
+.navbar-menu__eyebrow {
+    margin-bottom: 6px;
+    color: #d9434e;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+.navbar-menu__heading h2 {
     color: #111827;
-    transform: translateX(2px);
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
 }
 
-@media (min-width: 769px) {
+.navbar-menu__links {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-menu__links a {
+    display: grid;
+    grid-template-columns: 36px 1fr 20px;
+    align-items: center;
+    gap: 10px;
+    padding: 17px 4px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #1f2937;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: color 0.2s ease, padding 0.2s ease;
+}
+
+.navbar-menu__links a:hover {
+    padding-right: 0;
+    padding-left: 10px;
+    color: #d9434e;
+}
+
+.navbar-menu__number {
+    color: #9ca3af;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.navbar-menu__arrow {
+    width: 20px;
+    height: 20px;
+    color: #9ca3af;
+    fill: currentColor;
+}
+
+.menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: rgba(15, 23, 42, 0.48);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+    cursor: default;
+}
+
+.menu-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.28s ease, visibility 0s;
+}
+
+.navbar.is-menu-open .navbar-logo {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 600px) {
     .navbar-menu {
-        min-width: 240px;
+        width: 100vw;
+        padding-right: 24px;
+        padding-left: 24px;
+        border-left: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-menu,
+    .menu-backdrop,
+    .navbar-menu__links a {
+        transition: none;
     }
 }
 </style>
 
 <script>
-    const toggleButton = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.navbar-menu');
+    const navbar = document.querySelector<HTMLElement>('.navbar');
+    const toggleButton = document.querySelector<HTMLButtonElement>('.menu-toggle');
+    const toggleIcon = toggleButton?.querySelector<HTMLElement>('.menu-toggle__icon');
+    const menu = document.querySelector<HTMLElement>('.navbar-menu');
+    const backdrop = document.querySelector<HTMLButtonElement>('.menu-backdrop');
+    const menuLinks = menu?.querySelectorAll<HTMLAnchorElement>('a[href]');
+    let previousBodyOverflow = '';
 
-    if (toggleButton && menu) {
+    const updateNavbar = () => {
+        navbar?.classList.toggle('is-visible', window.scrollY > 0);
+    };
+
+    updateNavbar();
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+
+    if (toggleButton && menu && backdrop) {
+        const setMenuOpen = (isOpen: boolean) => {
+            menu.classList.toggle('is-open', isOpen);
+            backdrop.classList.toggle('is-open', isOpen);
+            navbar?.classList.toggle('is-menu-open', isOpen);
+            menu.setAttribute('aria-hidden', String(!isOpen));
+            toggleButton.setAttribute('aria-expanded', String(isOpen));
+            toggleButton.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+            if (toggleIcon) toggleIcon.textContent = isOpen ? 'menu_open' : 'menu';
+            backdrop.setAttribute('aria-hidden', String(!isOpen));
+            if (isOpen) {
+                previousBodyOverflow = document.body.style.overflow;
+                document.body.style.overflow = 'hidden';
+                menuLinks?.[0]?.focus();
+            } else {
+                document.body.style.overflow = previousBodyOverflow;
+                toggleButton.focus();
+            }
+        };
+
         const closeMenu = () => {
-            menu.classList.remove('is-open');
-            toggleButton.setAttribute('aria-expanded', 'false');
-            toggleButton.setAttribute('aria-label', 'メニューを開く');
+            setMenuOpen(false);
         };
 
         toggleButton.addEventListener('click', () => {
-            const isOpen = menu.classList.toggle('is-open');
-            toggleButton.setAttribute('aria-expanded', String(isOpen));
-            toggleButton.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+            setMenuOpen(toggleButton.getAttribute('aria-expanded') !== 'true');
         });
 
-        menu.querySelectorAll('a').forEach((link) => {
+        backdrop.addEventListener('click', closeMenu);
+
+        menuLinks?.forEach((link) => {
             link.addEventListener('click', () => {
                 closeMenu();
             });
@@ -173,8 +311,39 @@
 
         document.addEventListener('click', (event) => {
             if (!(event.target instanceof Element)) return;
-            if (!menu.contains(event.target) && !toggleButton.contains(event.target)) {
+            if (toggleButton.getAttribute('aria-expanded') === 'true'
+                && !menu.contains(event.target)
+                && !toggleButton.contains(event.target)
+                && !backdrop.contains(event.target)) {
                 closeMenu();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (toggleButton.getAttribute('aria-expanded') !== 'true') return;
+
+            if (event.key === 'Escape') {
+                closeMenu();
+                return;
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const firstMenuLink = menuLinks?.[0];
+            const lastMenuLink = menuLinks?.item((menuLinks?.length ?? 1) - 1);
+
+            if (event.shiftKey && document.activeElement === firstMenuLink) {
+                event.preventDefault();
+                toggleButton.focus();
+            } else if (!event.shiftKey && document.activeElement === toggleButton) {
+                event.preventDefault();
+                firstMenuLink?.focus();
+            } else if (event.shiftKey && document.activeElement === toggleButton) {
+                event.preventDefault();
+                lastMenuLink?.focus();
+            } else if (!event.shiftKey && document.activeElement === lastMenuLink) {
+                event.preventDefault();
+                toggleButton.focus();
             }
         });
     }

@@ -1,55 +1,66 @@
-<section id="top" class="section section-mission">
+<section id="top" class="section top-hero">
     <div class="container">
         <div class="top-heading">
             <h2>『楽しく！格好よく！』鉄道の未来を創る</h2>
         </div>
-        <p class="top-text">
-            私たち横浜TLC合同会社は、日本の動脈である鉄道の安全を支える<br>
-            電車線工事のプロフェッショナル集団です。<br>
-            <br>
-            日常の移動を裏側から支える「誇り」を胸に<br>
-            これからも高度な技術力でお客様の期待に応え<br>
-            安心・安全な鉄道インフラの未来に貢献してまいります。<br>
-        </p>
+        <div class="top-text">
+            <p>
+                私たち横浜TLC合同会社は、日本の動脈である鉄道の安全を支える<br class="wide-break">電車線工事のプロフェッショナル集団です。
+            </p>
+            <p>
+                日常の移動を裏側から支える「誇り」を胸に<br class="wide-break">これからも高度な技術力でお客様の期待に応え<br class="wide-break">安心・安全な鉄道インフラの未来に貢献してまいります。
+            </p>
+        </div>
     </div>
 </section>
 
 <style>
-.top-heading {
-    margin-bottom: 24px;
-}
-
-.top-heading h2 {
-    font-size: clamp(2rem, 2.2vw, 1.6rem);
-    color: #1f2937;
-    display: flex;
-    justify-content: center;
-}
-
-.top-text {
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.8;
-    color: #4b5563;
-    margin-bottom: 36px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.section-mission {
+.top-hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: clamp(2rem, 8vh, 5.5rem) 0;
     background:
         linear-gradient(
         rgb(241, 241, 241),
         rgba(241, 241, 241, 0.8)
         ),
         url("../../doc/image/mission.png");
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     display: flex;
+    align-items: center;
     justify-content: center;
+}
+
+.top-heading {
+    margin-bottom: clamp(1rem, 3vh, 1.5rem);
+}
+
+.top-heading h2 {
+    font-size: clamp(1.25rem, 2.4vw, 2rem);
+    color: #1f2937;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.top-text {
+    font-weight: 400;
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    line-height: 1.8;
+    color: #4b5563;
+    display: grid;
+    gap: clamp(1rem, 2.5vh, 1.5rem);
+    text-align: center;
+}
+
+.top-text p {
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .top-text .wide-break {
+        display: none;
+    }
 }
 </style>

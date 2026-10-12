@@ -2,8 +2,12 @@
 import ImageGallery from "./ImageGallery.astro";
 
 const descriptionImages = [
-    "../../doc/image/description1.png",
-    "../../doc/image/description2.png",
+    "../../doc/image/R_Description1.jpg",
+    "../../doc/image/R_Description2.jpg",
+    "../../doc/image/R_Description3.jpg",
+    "../../doc/image/R_Description4.jpg",
+    "../../doc/image/R_Description5.jpg",
+    "../../doc/image/R_Description6.jpg",
 ];
 ---
 
@@ -13,17 +17,20 @@ const descriptionImages = [
             <p class="section-label">Description</p>
             <h2>仕事内容</h2>
         </div>
-        <p class="section-text">
-            <span class="description-question">電車線工事とは？</span>
-            電車線工事とは、電車が走るために必要な「電気」を供給する設備をつくり、守る仕事です。<br>
-            電車は、線路の上に張られた電線（架線）からパンタグラフを通じて大量の電気を取り込んで走っています。<br>
-            この電線や、それを支える支持物（電柱やビーム）、<br>
-            変電所から電気を送る設備などの新設・修繕・メンテナンスを行うのが「電車線工事」です。<br>
-            <br>
-            多くの作業は、電車の運行が終わった「終電から始発までの限られた夜間」に行われます。<br>
-            一瞬のミスも許されない緊張感の中、高度な技術を持った技術者がチームワークを発揮し、<br>
-            翌朝の始発列車が何事もなかったように安全に走れる環境を整えています。<br>
-        </p>
+        <div class="description-intro-grid">
+            <p class="section-text">
+                <span class="description-question">電車線工事とは？</span>
+                電車線工事とは、電車が走るために必要な「電気」を供給する設備をつくり、守る仕事です。<br>
+                電車は、線路の上に張られた電線（架線）からパンタグラフを通じて大量の電気を取り込んで走っています。<br>
+                この電線や、それを支える支持物（電柱やビーム）、<br>
+                変電所から電気を送る設備などの新設・修繕・メンテナンスを行うのが「電車線工事」です。<br>
+                <br>
+                多くの作業は、電車の運行が終わった「終電から始発までの限られた夜間」に行われます。<br>
+                一瞬のミスも許されない緊張感の中、高度な技術を持った技術者がチームワークを発揮し、<br>
+                翌朝の始発列車が何事もなかったように安全に走れる環境を整えています。<br>
+            </p>
+            <ImageGallery images={descriptionImages} alt="仕事内容の写真" fit="contain" />
+        </div>
 
         <div class="main-grid">
             <article>
@@ -43,7 +50,6 @@ const descriptionImages = [
                 <p>台風や地震などの自然災害によって万が一設備が破損した場合、一刻も早い運転再開に向けて現場へ急行し、迅速かつ安全に復旧工事を行なう。</p>
             </article>
         </div>
-        <ImageGallery images={descriptionImages} alt="仕事内容の写真" />
     </div>
 </section>
 
@@ -60,5 +66,28 @@ const descriptionImages = [
     font-weight: 800;
     line-height: 1.4;
     color: #1f2937;
+}
+
+.description-intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin-bottom: 36px;
+}
+
+.description-intro-grid .section-text {
+    margin-bottom: 0;
+}
+
+.description-intro-grid :global(.image-gallery) {
+    width: 100%;
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .description-intro-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>

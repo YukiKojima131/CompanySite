@@ -3,13 +3,17 @@ interface ImageGalleryProps {
     images?: string[];
     alt?: string;
     caption?: string;
+    fit?: "cover" | "contain";
 }
 
-const { images = [], alt = "会社の写真", caption = "" } = Astro.props as ImageGalleryProps;
+const { images = [], alt = "会社の写真", caption = "", fit = "cover" } = Astro.props as ImageGalleryProps;
 ---
 
-<div class="image-gallery" data-image-gallery>
+<div class:list={["image-gallery", `image-gallery--${fit}`]} data-image-gallery>
     <div class="image-gallery__viewport">
+        {images.length > 1 && <button type="button" class="image-gallery__hit-area image-gallery__hit-area--prev" aria-label="前の画像"></button>}
+        {images.length > 1 && <button type="button" class="image-gallery__hit-area image-gallery__hit-area--next" aria-label="次の画像"></button>}
+
         {images.map((src: string, index: number) => (
             <figure
                 class:list={['image-gallery__slide', { 'is-active': index === 0 }]}
@@ -23,11 +27,7 @@ const { images = [], alt = "会社の写真", caption = "" } = Astro.props as Im
     </div>
 
     {images.length > 1 && (
-        <div class="image-gallery__controls" aria-label="画像切替">
-            <button type="button" class="image-gallery__button image-gallery__button--prev" aria-label="前の画像">
-                ←
-            </button>
-
+        <div class="image-gallery__controls">
             <div class="image-gallery__dots" aria-label="画像一覧">
                 {images.map((_: string, index: number) => (
                     <button
@@ -38,10 +38,6 @@ const { images = [], alt = "会社の写真", caption = "" } = Astro.props as Im
                     />
                 ))}
             </div>
-
-            <button type="button" class="image-gallery__button image-gallery__button--next" aria-label="次の画像">
-                →
-            </button>
         </div>
     )}
 </div>
@@ -54,8 +50,8 @@ const { images = [], alt = "会社の写真", caption = "" } = Astro.props as Im
         if (slides.length < 2) return;
 
         const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>('.image-gallery__dot'));
-        const prevButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__button--prev');
-        const nextButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__button--next');
+        const prevButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__hit-area--prev');
+        const nextButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__hit-area--next');
 
         let currentIndex = 0;
 
