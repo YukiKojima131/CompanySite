@@ -4,15 +4,16 @@ interface ImageGalleryProps {
     alt?: string;
     caption?: string;
     fit?: "cover" | "contain";
+    interaction?: "controls" | "wheel" | "controls-wheel";
 }
 
-const { images = [], alt = "会社の写真", caption = "", fit = "cover" } = Astro.props as ImageGalleryProps;
+const { images = [], alt = "会社の写真", caption = "", fit = "cover", interaction = "controls" } = Astro.props as ImageGalleryProps;
 ---
 
-<div class:list={["image-gallery", `image-gallery--${fit}`]} data-image-gallery>
+<div class:list={["image-gallery", `image-gallery--${fit}`]} data-image-gallery data-interaction={interaction}>
     <div class="image-gallery__viewport">
-        {images.length > 1 && <button type="button" class="image-gallery__hit-area image-gallery__hit-area--prev" aria-label="前の画像"></button>}
-        {images.length > 1 && <button type="button" class="image-gallery__hit-area image-gallery__hit-area--next" aria-label="次の画像"></button>}
+        {images.length > 1 && interaction !== "wheel" && <button type="button" class="image-gallery__hit-area image-gallery__hit-area--prev" aria-label="前の画像"></button>}
+        {images.length > 1 && interaction !== "wheel" && <button type="button" class="image-gallery__hit-area image-gallery__hit-area--next" aria-label="次の画像"></button>}
 
         {images.map((src: string, index: number) => (
             <figure
@@ -26,7 +27,7 @@ const { images = [], alt = "会社の写真", caption = "", fit = "cover" } = As
         ))}
     </div>
 
-    {images.length > 1 && (
+    {images.length > 1 && interaction !== "wheel" && (
         <div class="image-gallery__controls">
             <div class="image-gallery__dots" aria-label="画像一覧">
                 {images.map((_: string, index: number) => (
@@ -52,8 +53,11 @@ const { images = [], alt = "会社の写真", caption = "", fit = "cover" } = As
         const dots = Array.from(gallery.querySelectorAll<HTMLButtonElement>('.image-gallery__dot'));
         const prevButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__hit-area--prev');
         const nextButton = gallery.querySelector<HTMLButtonElement>('.image-gallery__hit-area--next');
+        const interaction = gallery.dataset.interaction;
+        const wheelInteraction = interaction === 'wheel' || interaction === 'controls-wheel';
 
         let currentIndex = 0;
+        let lastWheelChange = 0;
 
         const updateSlide = (nextIndex: number) => {
             currentIndex = (nextIndex + slides.length) % slides.length;
@@ -77,6 +81,21 @@ const { images = [], alt = "会社の写真", caption = "", fit = "cover" } = As
                 updateSlide(Number(dot.dataset.index));
             });
         });
+
+        if (wheelInteraction) {
+            gallery.addEventListener('wheel', (event: WheelEvent) => {
+                if (Math.abs(event.deltaY) < 10) return;
+                event.preventDefault();
+
+                const now = Date.now();
+                if (now - lastWheelChange < 500) return;
+                lastWheelChange = now;
+                updateSlide(currentIndex + (event.deltaY > 0 ? 1 : -1));
+            }, { passive: false });
+            if (interaction === 'wheel') return;
+        }
+
+        if (interaction === 'controls-wheel') return;
 
         let autoPlay = window.setInterval(() => updateSlide(currentIndex + 1), 4000);
 

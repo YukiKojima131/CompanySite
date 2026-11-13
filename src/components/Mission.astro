@@ -1,72 +1,40 @@
 ---
 import ImageGallery from "./ImageGallery.astro";
+import ToggleItem from "./ToggleItem.astro";
 
 const missionImages = [
-    "/image/mission1.png",
-    "/image/mission2.png",
+    "/image/R_Mission_1.jpg",
+    "/image/R_Mission_2.jpg",
+    "/image/R_Mission_3.jpg",
+    "/image/R_Mission_4.jpg",
 ];
 ---
 
 <section id="mission" class="section section-mission">
     <div class="container">
         <div class="section-heading">
-            <p class="section-label">Mission</p>
+            <p class="section-label"><span class="section-label-initial">M</span>ission</p>
             <h2>経営理念</h2>
         </div>
-        <p class="section-text">
-            横浜TLC合同会社には、大切にしている経営理念があります。<br>
-            それが『楽しく！格好よく！』です。<br>
-            鉄道インフラを支える電車線工事は、責任が大きく、決して楽な仕事ではありません。<br>
-            だからこそ私たちは、この理念を胸に、どこよりも誇り高く、<br>
-            魅力的なチームであり続けることを目指しています。<br>
-        </p>
-        <article class="mission-item">
-            <div class="mission-title-row">
-                <h3 class="mission-title">1.『楽しく』ー強い絆で結ばれた最高のチームワーク</h3>
-                <button
-                    class="mission-toggle"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="mission-detail-1"
-                    aria-label="『楽しく』の説明を表示"
-                    data-label-open="『楽しく』の説明を閉じる"
-                    data-label-closed="『楽しく』の説明を表示"
-                >
-                    <svg class="mission-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path class="keyboard-arrow-down" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
-                        <path class="keyboard-arrow-up" d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-                    </svg>
-                </button>
-            </div>
-            <div id="mission-detail-1" class="mission-detail" hidden>
+        <article class="content-card mission-intro-card">
+            <p class="section-text">
+                横浜TLC合同会社には、大切にしている経営理念があります。<br>
+                それが『楽しく！格好よく！』です。<br>
+                鉄道インフラを支える電車線工事は、責任が大きく、決して楽な仕事ではありません。<br>
+                だからこそ私たちは、この理念を胸に、どこよりも誇り高く、<br>
+                魅力的なチームであり続けることを目指しています。<br>
+            </p>
+        </article>
+        <div class="mission-items">
+            <ToggleItem id="mission-detail-1" title="1.『楽しく』ー強い絆で結ばれた最高のチームワーク">
                 <p class="section-text">
                     危険が伴う夜間工事だからこそ、現場の信頼関係と風通しの良さは何よりも重要です。<br>
                     私たちは、社歴や年齢に関係なく、誰もが自分の意見を言い合える暖かい環境づくりを大切にしています。<br>
                     お互いをリスペクトし、仕事のやりがいを共有し、時には冗談を言い合える。<br>
                     そんな「楽しさ」があるからこそ、厳しい現場でも全員で笑顔で乗り越えることができ、それが圧倒的な「無事故」という結果に繋がっています。<br>
                 </p>
-            </div>
-        </article>
-
-        <article class="mission-item">
-            <div class="mission-title-row">
-                <h3 class="mission-title">2.『格好よく』ープロフェッショナルとしての圧倒的な誇り</h3>
-                <button
-                    class="mission-toggle"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="mission-detail-2"
-                    aria-label="『格好よく』の説明を表示"
-                    data-label-open="『格好よく』の説明を閉じる"
-                    data-label-closed="『格好よく』の説明を表示"
-                >
-                    <svg class="mission-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path class="keyboard-arrow-down" d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
-                        <path class="keyboard-arrow-up" d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
-                    </svg>
-                </button>
-            </div>
-            <div id="mission-detail-2" class="mission-detail" hidden>
+            </ToggleItem>
+            <ToggleItem id="mission-detail-2" title="2.『格好よく』ープロフェッショナルとしての圧倒的な誇り">
                 <p class="section-text">
                     私たちが向き合うのは、人々の生活を乗せて走る電車の「命」である電気設備です。<br>
                     終電後の限られた時間の中で、特殊な技術とチームワークを駆使し、一寸の狂いもなく架線を張り替える。<br>
@@ -74,13 +42,15 @@ const missionImages = [
                     妥協のない高い技術力と、誰もが安心して暮らせる社会を守る責任感。<br>
                     それが私たちの「格好よさ」の原点です。
                 </p>
-            </div>
+            </ToggleItem>
+        </div>
+        <article class="content-card mission-conclusion">
+            <p class="section-text">
+                堅苦しいだけの現場はいらない。<br>
+                私たちは、技術と心の両面から、これからの鉄道インフラの未来を明るく照らし続けます。
+            </p>
         </article>
-        <p class="section-text mission-conclusion">
-            堅苦しいだけの現場はいらない。<br>
-            私たちは、技術と心の両面から、これからの鉄道インフラの未来を明るく照らし続けます。
-        </p>
-        <ImageGallery images={missionImages} alt="経営理念の写真" />
+        <ImageGallery images={missionImages} alt="経営理念の写真" fit="contain" interaction="controls-wheel" />
     </div>
 </section>
 
@@ -100,99 +70,26 @@ const missionImages = [
 }
 
 .section-mission {
-    --card-bg: #f1f1f1;
-    background: #ffffff;
+    --card-bg: #ffffff;
+    background: #f8f8f8;
     display: flex;
     justify-content: center;
 }
-.mission-title {
-    margin: 0;
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    font-weight: 800;
-    line-height: 1.4;
-    color: #1f2937;
+
+.mission-intro-card .section-text,
+.mission-conclusion .section-text {
+    margin-bottom: 0;
 }
 
-.mission-item + .mission-item {
+.mission-intro-card {
+    margin-bottom: 24px;
+}
+
+.mission-items :global(.toggle-item + .toggle-item) {
     margin-top: 1.5rem;
-}
-
-.mission-title-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
-
-.mission-title {
-    width: 100%;
-}
-
-.mission-toggle {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    border: 1px solid #d1d5db;
-    border-radius: 50%;
-    background: #fff;
-    color: #1f2937;
-    cursor: pointer;
-    flex: none;
-    transition: background-color 0.2s ease;
-}
-
-.mission-toggle:hover {
-    background: #f3f4f6;
-}
-
-.mission-toggle:focus-visible {
-    outline: 3px solid #d9434e;
-    outline-offset: 3px;
-}
-
-.mission-toggle-icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-}
-
-.mission-toggle[aria-expanded="false"] .keyboard-arrow-up,
-.mission-toggle[aria-expanded="true"] .keyboard-arrow-down {
-    display: none;
-}
-
-.mission-detail[hidden] {
-    display: none;
-}
-
-.mission-detail .section-text {
-    margin: 12px 0 0;
 }
 
 .mission-conclusion {
-    margin-top: 1.5rem;
+    margin: 1.5rem 0 1rem;
 }
 </style>
-
-<script>
-    document.querySelectorAll('.mission-toggle').forEach((button) => {
-        const detailId = button.getAttribute('aria-controls');
-        const detail = detailId ? document.getElementById(detailId) : null;
-        if (!detail) return;
-
-        button.addEventListener('click', () => {
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            const shouldExpand = !isExpanded;
-
-            detail.hidden = !shouldExpand;
-            button.setAttribute('aria-expanded', String(shouldExpand));
-            button.setAttribute(
-                'aria-label',
-                button.getAttribute(shouldExpand ? 'data-label-open' : 'data-label-closed') ?? '説明を開閉',
-            );
-        });
-    });
-</script>

@@ -1,0 +1,155 @@
+---
+interface Props {
+    id: string;
+    title: string;
+    inline?: boolean;
+}
+
+const { id, title, inline = false } = Astro.props;
+---
+
+<details class:list={["toggle-item", { "toggle-item--inline": inline }]} id={id}>
+    <summary class="toggle-item__summary">
+        <span class="toggle-item__title">{title}</span>
+    </summary>
+    <div class:list={["toggle-item__content", { "toggle-item__content--inline": inline }]}>
+        <div class="toggle-item__always">
+            <slot name="always" />
+        </div>
+        <div class="toggle-item__detail">
+            <slot />
+        </div>
+    </div>
+</details>
+
+<style>
+.toggle-item {
+    max-width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 0 7px 15px -5px rgb(0 0 0 / 5%);
+}
+
+.toggle-item__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1em 2em;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-item__summary:hover,
+.toggle-item__summary:focus-visible {
+    transform: translateY(-2px);
+    background-color: #eaf8fd;
+    box-shadow: 0 2px 0 #eaf8fd;
+}
+
+.toggle-item__summary:focus-visible {
+    outline: 2px solid #215f9a;
+    outline-offset: -3px;
+}
+
+.toggle-item__summary::-webkit-details-marker {
+    display: none;
+}
+
+.toggle-item__summary::before,
+.toggle-item__summary::after {
+    width: 3px;
+    height: 0.9em;
+    border-radius: 5px;
+    background-color: #333333b3;
+    content: "";
+}
+
+.toggle-item__summary::before {
+    position: absolute;
+    right: 2em;
+    rotate: 90deg;
+}
+
+.toggle-item__summary::after {
+    transition: rotate 0.3s;
+}
+
+.toggle-item[open] .toggle-item__summary::after {
+    rotate: 90deg;
+}
+
+.toggle-item__title {
+    width: 100%;
+    padding-right: 1.5rem;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.toggle-item__content {
+    padding: 0.3em 2em 1.5em;
+}
+
+.toggle-item__content--inline {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+}
+
+.toggle-item--inline[open] .toggle-item__content--inline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+}
+
+.toggle-item__detail :global(p) {
+    margin: 0;
+}
+
+.toggle-item__detail :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 12px;
+    border-radius: 8px;
+}
+
+.toggle-item__content--inline .toggle-item__detail :global(img) {
+    margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toggle-item__summary {
+        transition: none;
+    }
+
+    .toggle-item__summary:hover,
+    .toggle-item__summary:focus-visible {
+        transform: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .toggle-item__summary {
+        padding: 1em 1.5em;
+    }
+
+    .toggle-item__summary::before {
+        right: 1.5em;
+    }
+
+    .toggle-item__content {
+        padding-right: 1.5em;
+        padding-left: 1.5em;
+    }
+
+    .toggle-item--inline[open] .toggle-item__content--inline {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+</style>

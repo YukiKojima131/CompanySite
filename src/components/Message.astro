@@ -9,23 +9,25 @@ const messageImages = [
 <section id="message" class="section section-mission">
     <div class="container">
         <div class="section-heading">
-            <p class="section-label">Message</p>
+            <p class="section-label"><span class="section-label-initial">M</span>essage</p>
             <h2>挨拶</h2>
         </div>
         <ImageGallery images={messageImages} alt="挨拶の写真" />
-        <p class="section-text">
-            当社のホームページにお越しいただき、ありがとうございます。<br>
-            私たち横浜TLC合同会社は、電車の運行には不可欠な架線や電気設備の工事・メンテナンスを行っている会社です。<br>
-            終電後の限られた時間や、緊張感のある現場での作業など、決して楽な仕事ばかりではありません。<br>
-            しかし、自分が関わった線路の上を、<br>
-            翌朝から多くの人を乗せた電車が何事もなく走り抜けていく姿を見た時の達成感は、何物にも代えがたいものがあります。<br>
-            <br>
-            私たちが大切にしているものは「人」です。<br>
-            特殊で専門性の高い技術だからこそ、未経験からでも安心してプロを目指せる教育環境と、<br>
-            何よりも現場の全員が「絶対に無事故で帰る」ための安全対策を徹底しています。<br>
-            鉄道という巨大なインフラを支え、次の世代へ繋いでいく仲間を、<br>
-            私たちはいつでも歓迎します。誇りを持てる仕事を、私たちと始めてみませんか。
-        </p>
+        <article class="content-card message-card">
+            <p class="section-text">
+                当社のホームページにお越しいただき、ありがとうございます。<br>
+                私たち横浜TLC合同会社は、電車の運行には不可欠な架線や電気設備の工事・メンテナンスを行っている会社です。<br>
+                終電後の限られた時間や、緊張感のある現場での作業など、決して楽な仕事ばかりではありません。<br>
+                しかし、自分が関わった線路の上を、<br>
+                翌朝から多くの人を乗せた電車が何事もなく走り抜けていく姿を見た時の達成感は、何物にも代えがたいものがあります。<br>
+                <br>
+                私たちが大切にしているものは「人」です。<br>
+                特殊で専門性の高い技術だからこそ、未経験からでも安心してプロを目指せる教育環境と、<br>
+                何よりも現場の全員が「絶対に無事故で帰る」ための安全対策を徹底しています。<br>
+                鉄道という巨大なインフラを支え、次の世代へ繋いでいく仲間を、<br>
+                私たちはいつでも歓迎します。誇りを持てる仕事を、私たちと始めてみませんか。
+            </p>
+        </article>
     </div>
 </section>
 
@@ -45,9 +47,13 @@ const messageImages = [
 }
 
 .section-mission {
-    --card-bg: #f1f1f1;
-    background: #ffffff;
+    --card-bg: #ffffff;
+    background: #f8f8f8;
     display: flex;
     justify-content: center;
+}
+
+.message-card .section-text {
+    margin-bottom: 0;
 }
 </style>

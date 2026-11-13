@@ -1,0 +1,198 @@
+---
+import ToggleItem from "./ToggleItem.astro";
+---
+
+<section id="projects" class="section projects-section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="section-label"><span class="section-label-initial">P</span>rojects</p>
+            <h2>施工実績</h2>
+        </div>
+
+        <div class="projects-layout">
+            <div class="projects-list">
+                <ToggleItem id="project-detail-1" title="各路線の支持物取替工事（一部抜粋）">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>横須賀線 大船以南全域<br>
+                                <span>大船、北鎌倉、鎌倉、逗子、東逗子、田浦、横須賀、衣笠、久里浜</span></li>
+                            <li>京浜東北根岸線<br>
+                                <span>根岸～磯子間、本郷台構内、大船構内</span></li>
+                            <li>横浜線<br>
+                                <span>大口～菊名</span></li>
+                            <li>高島線<br>
+                                <span>東高島構内</span></li>
+                            <li>鶴見線<br>
+                                <span>鶴見線オフィス</span></li>
+                            <li>南武線<br>
+                                <span>矢向～鹿島田間、武蔵溝ノ口構内、河原田構内</span></li>
+                            <li>東海道本線<br>
+                                <span>早川構内、早川～根府川間、根府川構内</span></li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+
+                <ToggleItem id="project-detail-2" title="き電線張替（一部抜粋）">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>横須賀線<br>
+                                <span>田浦構内、東逗子構内、早川～根府川間</span></li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+
+                <ToggleItem id="project-detail-3" title="ケーブル取替、検査接地装置新設等（一部抜粋）">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>横浜線<br>
+                                <span>大口～菊名間 き電ケーブル化工事</span></li>
+                            <li>東海道本線<br>
+                                <span>二宮SS 帰線ケーブル取替</span><br>
+                                <span>大船構内 き電保護装置新設</span><br>
+                                <span>戸塚構内 検電設置装置新設</span></li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+
+                <ToggleItem id="project-detail-4" title="支持物塗装工事">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>京浜東北根岸線<br>
+                                <span>横浜～洋光台間</span></li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+
+                <ToggleItem id="project-detail-5" title="各種張替工事（一部抜粋）">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>吊架線張替</li>
+                            <li>補助吊架線張替</li>
+                            <li>トロリー線張替</li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+
+                <ToggleItem id="project-detail-6" title="各種修繕工事（一部抜粋）">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>STB取替</li>
+                            <li>碍子取替</li>
+                            <li>曲引・振止装置取替</li>
+                            <li>コネクタ取替</li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+
+                <ToggleItem id="project-detail-7" title="緊急出動（一部抜粋）">
+                    <div class="projects-group__content">
+                        <ul>
+                            <li>桜木町構内</li>
+                            <li>鶴見～新子安</li>
+                            <li>大船構内</li>
+                            <li>鎌倉～逗子</li>
+                        </ul>
+                    </div>
+                </ToggleItem>
+            </div>
+
+            <aside class="projects-gallery" aria-label="施工実績の写真">
+                <img src="/image/R_Description1.jpg" alt="夜間の電車線工事の様子" loading="lazy" />
+                <img src="/image/R_Mission_3.jpg" alt="支持物工事の様子" loading="lazy" />
+            </aside>
+        </div>
+
+        <article class="content-card projects-summary">
+            <p>
+                JR横浜支社管内全域の各路線で日本リーテック横浜支店様から工事を請け施工しています。<br>
+                （東海道本線、東海道貨物線、横須賀線、京浜東北根岸線、横浜線、相模線、南武線、鶴見線）
+            </p>
+        </article>
+    </div>
+</section>
+
+<style>
+.projects-section {
+    --card-bg: #ffffff;
+    background: #f8f8f8;
+}
+
+.projects-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 30%);
+    align-items: start;
+    gap: clamp(24px, 4vw, 48px);
+}
+
+.projects-list {
+    color: #4b5563;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.65;
+}
+
+.projects-list :global(.toggle-item) {
+    margin-bottom: 1.5rem;
+}
+
+.projects-group__content {
+    padding: 0.65rem 0;
+}
+
+.projects-group__content ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    list-style: circle;
+}
+
+.projects-group__content li + li {
+    margin-top: 0.15rem;
+}
+
+.projects-group__content span {
+    display: inline-block;
+    padding-left: 0.5rem;
+}
+
+.projects-gallery {
+    display: grid;
+    gap: 8px;
+}
+
+.projects-gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.projects-summary {
+    margin-top: 2rem;
+    color: #4b5563;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.projects-summary p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .projects-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 480px) {
+    .projects-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

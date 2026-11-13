@@ -10,8 +10,9 @@ html {
 
 body {
     font-family:
+        "Hiragino Sans"
         "Yu Gothic",
-        "Hiragino Sans",
+        "Meiryo",
         sans-serif;
 
     background: #f5f6f8;
@@ -150,7 +151,14 @@ img {
 }
 
 .section-heading {
-    margin-bottom: 24px;
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    max-width: none;
+    margin: -88px 0 24px;
+    padding: 88px 16px;
+    transform: translateX(-50%);
+    background: #ffffff;
 }
 
 .section-label {
@@ -159,9 +167,13 @@ img {
     font-size: clamp(1.6rem, 2.2vw, 2.2rem);
     font-weight: 700;
     letter-spacing: 0.2em;
-    color: #d9434e;
+    color: #000000;
     margin-bottom: 8px;
     font-family: "inherit", sans-serif;
+}
+
+.section-label-initial {
+    color: #61CCF4;
 }
 
 .section-heading h2 {
@@ -178,6 +190,13 @@ img {
     color: #4b5563;
     margin-bottom: 36px;
     display: block;
+}
+
+.content-card {
+    padding: clamp(20px, 3vw, 32px);
+    border-radius: 16px;
+    background: var(--card-bg, #ffffff);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
 .main-grid {
@@ -213,7 +232,7 @@ img {
     margin-bottom: 24px;
     padding: clamp(24px, 3vw, 40px);
     border-radius: 18px;
-    background: #fff;
+    background: var(--card-bg, #ffffff);
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
 }
 
